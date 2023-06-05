@@ -20,6 +20,7 @@ class Criminal {
     //Variables de instancia
     protected:
     int id;
+    string tipo;
     string nombre;
     char veredicto;
     double horas;
@@ -30,16 +31,20 @@ class Criminal {
     public:
     //Constructores
     //Default
-    Criminal(): id(0), nombre(""), veredicto('i'), horas(0.0), grado(0), tarifa(0.0) {}; 
+    Criminal(): id(0), tipo(""), nombre(""), veredicto('i'), horas(0.0), grado(0), tarifa(0.0) {}; 
 
     //Con parámetros
-    Criminal(int id_num, string nom, char ver, double hr, int grad, double tar):
-    id(id_num), nombre(nom), veredicto(ver), horas(hr), grado(grad), tarifa(tar) {};
+    Criminal(int id_num, string tip, string nom, char ver, double hr, int grad, double tar):
+    id(id_num), tipo(tip), nombre(nom), veredicto(ver), horas(hr), grado(grad), tarifa(tar) {};
 
     //Métodos del objeto
         //Getters
         int get_id() {
             return id;
+        }
+        
+        string get_tipo() {
+            return tipo;
         }
 
         string get_nombre() {
@@ -64,6 +69,7 @@ class Criminal {
 
         //Método abstracto
         virtual string toString() = 0; //para sobreescribir
+        virtual double calcularPago() = 0;
 };
 
 //Declaración de clase Homicidio (hereda de Criminal)
@@ -75,10 +81,10 @@ class Homicidio: public Criminal {
     //Métodos
     public:
     //Constructores
-    Homicidio(): Criminal(0, "", 'i', 0.0, 0, 0.0) {};
+    Homicidio(): Criminal(0, "homicidio", "", 'i', 0.0, 0, 0.0), involuntario(false) {};
 
     Homicidio(int id, string nombre, char veredicto, double horas, \
-    int grado, double tarifa, bool invol): Criminal(id, nombre, \
+    int grado, double tarifa, bool invol): Criminal(id, "homicidio", nombre, \
     veredicto, horas, grado, tarifa), involuntario(invol) {};
 
     //Getters
@@ -163,10 +169,10 @@ class Hurto: public Criminal {
     //Métodos
     public:
     //Constructores
-    Hurto(): Criminal(0, "", 'i', 0.0, 0, 0.0) {};
+    Hurto(): Criminal(0, "hurto", "", 'i', 0.0, 0, 0.0), valor_robado(0.0) {};
 
     Hurto(int id, string nombre, char veredicto, double horas, \
-    int grado, double tarifa, double vr): Criminal(id, nombre, \
+    int grado, double tarifa, double vr): Criminal(id, "hurto", nombre, \
     veredicto, horas, grado, tarifa), valor_robado(vr) {};
 
     //Otras funciones
@@ -232,4 +238,3 @@ string Hurto::toString(){
 }
 
 #endif // CRIMINAL_H_
-

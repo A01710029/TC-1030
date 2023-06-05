@@ -20,6 +20,7 @@ class Civil {
     //Variables de instancia
     protected:
     int id;
+    string tipo;
     string nombre;
     char veredicto;
     double acuerdo;
@@ -31,16 +32,20 @@ class Civil {
     public:
     //Constructores
     //Default
-    Civil(): id(0), nombre(""), veredicto('g'), acuerdo(0.0), demanda (0.0), cuota(0), corte(false) {}; 
+    Civil(): id(0), tipo(""), nombre(""), veredicto('g'), acuerdo(0.0), demanda (0.0), cuota(0), corte(false) {}; 
 
     //Con parámetros
-    Civil(int id_num, string nom, char ver, double ac, double dem, int cuo, bool cor):
-    id(id_num), nombre(nom), veredicto(ver), acuerdo(ac), demanda(dem), cuota(cuo), corte(cor) {};
+    Civil(int id_num, string tip, string nom, char ver, double ac, double dem, int cuo, bool cor):
+    id(id_num), tipo(tip), nombre(nom), veredicto(ver), acuerdo(ac), demanda(dem), cuota(cuo), corte(cor) {};
 
     //Métodos del objeto
         //Getters
         int get_id() {
             return id;
+        }
+
+        string get_tipo() {
+            return tipo;
         }
 
         string get_nombre() {
@@ -69,6 +74,7 @@ class Civil {
 
         //Método abstracto
         virtual string toString() = 0; //para sobreescribir
+        virtual double calcularPago() = 0;
 };
 
 //Declaración de clase Laborales (hereda de Civil)
@@ -80,10 +86,10 @@ class Laborales: public Civil {
     //Métodos
     public:
     //Constructores
-    Laborales(): Civil(0, "", 'g', 0.0, 0.0, 0, false) {};
+    Laborales(): Civil(0, "laborales", "", 'g', 0.0, 0.0, 0, false), demandado("") {};
 
     Laborales(int id, string nombre, char veredicto, double acuerdo, \
-    double dem, int cuo, bool cor, string deman): Civil(id, nombre, \
+    double dem, int cuo, bool cor, string deman): Civil(id, "laborales", nombre, \
     veredicto, acuerdo, demanda, cuota, corte), demandado(deman) {};
 
     //Getters
@@ -187,10 +193,10 @@ class Lesiones: public Civil {
     //Métodos
     public:
     //Constructores
-    Lesiones(): Civil(0, "", 'g', 0.0, 0.0, 0, false) {};
+    Lesiones(): Civil(0, "lesiones", "", 'g', 0.0, 0.0, 0, false), dano('m') {};
 
     Lesiones(int id, string nombre, char veredicto, double acuerdo, \
-    double demanda, int cuota, bool corte, char dan): Civil(id, nombre, \
+    double demanda, int cuota, bool corte, char dan): Civil(id, "lesiones", nombre, \
     veredicto, acuerdo, demanda, cuota, corte), dano(dan) {};
 
     //Otras funciones
