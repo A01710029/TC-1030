@@ -42,7 +42,8 @@ class Casos {
   
   //Metodos
   //Para crear ejemplos
-  void crea_ejemplos();
+  void crea_ejemplos_crim();
+  void crea_ejemplos_civ();
   
   //Para imprimir objetos
   void imprime_casos_crim();
@@ -74,22 +75,35 @@ class Casos {
 };
 
 /*
- * crea_ejemplos genera objetos en Casos
+ * crea_ejemplos genera objetos Criminal
  *
- * genera 1 objeto de tipo Homicidio, Hurto, Laborales y Lesiones
- * y los guarda en la variables crim[] o civ[] (arreglo de casos)
+ * genera 1 objeto de tipo Homicidio y Hurto
+ * y los guarda en la variable crim[] (arreglo de casos)
  * para poder demostrar las habilidades del programa. 
  *
  * @param
  * @return
  */
-void Casos::crea_ejemplos() {
+void Casos::crea_ejemplos_crim() {
 
   //utilizamos new para usar polimorfismo
   crim[cuenta_crim] = new Homicidio(cuenta_crim, "Fernandez", 'i', 200, 1, 35.0, true);
   cuenta_crim++;
   crim[cuenta_crim] = new Hurto(cuenta_crim, "Aldama", 'c', 156.2, 2, 18.0, 1800.0);
   cuenta_crim++;
+}
+
+/*
+ * crea_ejemplos genera objetos Civil
+ *
+ * genera 1 objeto de tipo Laborales y Lesiones
+ * y los guarda en la variable civ[] (arreglo de casos)
+ * para poder demostrar las habilidades del programa. 
+ *
+ * @param
+ * @return
+ */
+void Casos::crea_ejemplos_civ() {
   civ[cuenta_civ] = new Laborales(cuenta_civ, "Dominguez", 'g', 1200.0, 1600.0, 6, false, "Nestle");
   cuenta_civ++;
   civ[cuenta_civ] = new Lesiones(cuenta_civ, "Cesaro", 'p', 24000.0, 4000.0, 3, true, 'm');
