@@ -72,7 +72,7 @@ class Civil {
             return corte;
         }
 
-        //Método abstracto
+        //Métodos abstractos
         virtual string toString() = 0; //para sobreescribir
         virtual double calcularPago() = 0;
 };
@@ -127,11 +127,11 @@ class Laborales: public Civil {
 
     //Otras funciones
     double calcularPago();
-    double calcularGana_Cliente();
+    double calcularGanaCliente();
     string toString();
 };
 
-/*
+/**
 * calcularPago define el valor de pago para cada caso
 * basado en el veredicto, calcula el pago que recibe
 * el abogado por su trabajo, multiplicando por la cuota definida
@@ -151,21 +151,21 @@ double Laborales::calcularPago() {
     return total;
 }
 
-/* 
-* calcularGana_Cliente calcula la diferencia entre
+/** 
+* calcularGanaCliente calcula la diferencia entre
 * lo que pidio el cliente y lo que se gano
 * al final del caso
 * 
 * @param
 * @return valor de la ganancia (double)
 */
-double Laborales::calcularGana_Cliente(){
+double Laborales::calcularGanaCliente(){
     double ganancia;
     ganancia = acuerdo - demanda;
     return ganancia;
 }
 
-/*
+/**
 * toString convierte atributos a string
 * concatena todos los valores de los atributos en un string
 * para imprimirlos
@@ -201,11 +201,11 @@ class Lesiones: public Civil {
 
     //Otras funciones
     double calcularPago();
-    double calcularGana_Cliente();
+    double calcularGanaCliente();
     string toString();
 };
 
-/*
+/**
 * calculaPago calcula el pago del cliente
 * basado en la cuota, lo ganado para el cliente,
 * que tipo de daño sufrio el cliente
@@ -226,20 +226,20 @@ double Lesiones::calcularPago() {
     return total;
 }
 
-/*
-* calcularGana_Cliente calcula la diferencia entre
+/**
+* calcularGanaCliente calcula la diferencia entre
 * lo que pidio el cliente y lo que se gano
 * al final del caso
 * @param
 * @return double ganancia
 */
-double Lesiones::calcularGana_Cliente(){
+double Lesiones::calcularGanaCliente(){
     double ganancia;
     ganancia = acuerdo - demanda;
     return ganancia;
 }
 
-/*
+/**
 * toString convierte atributos a string
 * concatena todos los valores de los atributos en un string
 * para imprimirlos

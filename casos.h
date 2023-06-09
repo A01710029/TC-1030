@@ -25,41 +25,38 @@ using namespace std;
 const int MAX = 1000; //constante de tamaño de arreglos
 
 class Casos {
-
   //Variables de instancia
   private:
-
     Criminal * crim[MAX]; //apuntador para objetos tipo Criminal
     Civil * civ[MAX]; //apuntador para objetos tipo Civil
     int cuenta_crim;
     int cuenta_civ;
 
-  //Constructor
   public:
-  
+  //Constructores
   Casos(): cuenta_crim(0) {};
   Casos(): cuenta_civ(0) {};
   
   //Metodos
   //Para crear ejemplos
-  void crea_ejemplos_crim();
-  void crea_ejemplos_civ();
+  void creaEjemplosCrim();
+  void creaEjemplosCiv();
   
   //Para imprimir objetos
-  void imprime_casos_crim();
-  void imprime_casos_civ();
+  void imprimeCasosCrim();
+  void imprimeCasosCiv();
 
-  void imprime_casos_crim(string tipo);
-  void imprime_casos_civ(string tipo);
+  void imprimeCasosCrim(string tipo);
+  void imprimeCasosCiv(string tipo);
 
   //Para calcular pagos
-  double calc_pago_crim();
-  double calc_pago_civ();
+  double calcPagoCrim();
+  double calcPagoCiv();
 
-  double calc_pago_crim(string tipo);
-  double calc_pago_civ(string tipo);
+  double calcPagoCrim(string tipo);
+  double calcPagoCiv(string tipo);
 
-  double calc_pago_total();
+  double calcPagoTotal();
 
   //Para crear objetos
   void agregaHomicidio(string nombre, char veredicto, double horas, \
@@ -75,7 +72,7 @@ class Casos {
 };
 
 /*
- * crea_ejemplos genera objetos Criminal
+ * creaEjemplosCrim genera objetos Criminal
  *
  * genera 1 objeto de tipo Homicidio y Hurto
  * y los guarda en la variable crim[] (arreglo de casos)
@@ -84,7 +81,7 @@ class Casos {
  * @param
  * @return
  */
-void Casos::crea_ejemplos_crim() {
+void Casos::creaEjemplosCrim() {
 
   //utilizamos new para usar polimorfismo
   crim[cuenta_crim] = new Homicidio(cuenta_crim, "Fernandez", 'i', 200, 1, 35.0, true);
@@ -94,7 +91,7 @@ void Casos::crea_ejemplos_crim() {
 }
 
 /*
- * crea_ejemplos genera objetos Civil
+ * creaEjemplosCiv genera objetos Civil
  *
  * genera 1 objeto de tipo Laborales y Lesiones
  * y los guarda en la variable civ[] (arreglo de casos)
@@ -103,7 +100,7 @@ void Casos::crea_ejemplos_crim() {
  * @param
  * @return
  */
-void Casos::crea_ejemplos_civ() {
+void Casos::creaEjemplosCiv() {
   civ[cuenta_civ] = new Laborales(cuenta_civ, "Dominguez", 'g', 1200.0, 1600.0, 6, false, "Nestle");
   cuenta_civ++;
   civ[cuenta_civ] = new Lesiones(cuenta_civ, "Cesaro", 'p', 24000.0, 4000.0, 3, true, 'm');
@@ -111,14 +108,14 @@ void Casos::crea_ejemplos_civ() {
 }
 
 /*
- * muestra_casos imprime los casos criminales guardados
+ * imprimeCasosCrim imprime los casos criminales guardados
  * utiliza el arreglo crim[] y el número de cuenta para recorrer todo el
  * arreglo imprimiendo cada uno de los objetos con su método toString().
  *
  * @param
  * @return
  */
-void Casos::imprime_casos_crim() {
+void Casos::imprimeCasosCrim() {
 
   //Ciclo que recorre el arreglo e imprime cada objeto.
   for (int i = 0; i < cuenta_crim; i++)
@@ -126,14 +123,14 @@ void Casos::imprime_casos_crim() {
 }
 
 /*
- * muestra_casos imprime los casos civiles guardados
+ * imprimeCasosCiv imprime los casos civiles guardados
  * utiliza el arreglo civ[] y el número de cuenta para recorrer todo el
  * arreglo imprimiendo cada uno de los objetos con su método toString().
  *
  * @param
  * @return
  */
-void Casos::imprime_casos_civ() {
+void Casos::imprimeCasosCiv() {
 
   //Ciclo que recorre el arreglo e imprime cada objeto.
   for (int i = 0; i < cuenta_civ; i++)
@@ -141,7 +138,7 @@ void Casos::imprime_casos_civ() {
 }
 
 /*
- * imprime_casos_crim imprime casos criminales de un tipo específico (sobrecarga)
+ * imprimeCasosCrim imprime casos criminales de un tipo específico (sobrecarga)
  *
  * utiliza el arreglo crim[] y el número de cuenta para recorrer todo el
  * arreglo imprimiendo cada uno de los objetos  que coinciden con el
@@ -150,7 +147,7 @@ void Casos::imprime_casos_civ() {
  * @param string tipo debe ser: "homicidio" o "hurto"
  * @return
  */
-void Casos::imprime_casos_crim(string tipo) {
+void Casos::imprimeCasosCrim(string tipo) {
 
   //Ciclo que recorre el arreglo e imprime cada objeto.
   for (int i = 0; i < cuenta_crim; i++) {
@@ -160,7 +157,7 @@ void Casos::imprime_casos_crim(string tipo) {
 }
 
 /*
- * imprime_casos_civ imprime casos civiles de un tipo específico (sobrecarga)
+ * imprimeCasosCiv imprime casos civiles de un tipo específico (sobrecarga)
  *
  * utiliza el arreglo civ[] y el número de cuenta para recorrer todo el
  * arreglo imprimiendo cada uno de los objetos  que coinciden con el
@@ -169,7 +166,7 @@ void Casos::imprime_casos_crim(string tipo) {
  * @param string tipo debe ser: "laborales" o "lesiones"
  * @return
  */
-void Casos::imprime_casos_civ(string tipo) {
+void Casos::imprimeCasosCiv(string tipo) {
 
   //Ciclo que recorre el arreglo e imprime cada objeto.
   for (int i = 0; i < cuenta_civ; i++) {
@@ -179,7 +176,7 @@ void Casos::imprime_casos_civ(string tipo) {
 }
 
 /**
- * calc_paga_crim suma la paga total de todos los casos criminales
+ * calcPagoCrim suma la paga total de todos los casos criminales
  *
  * utiliza el arreglo crim[] y el número de cuenta para recorrer todo el
  * arreglo acumulando el pago de todos los casos.
@@ -187,7 +184,7 @@ void Casos::imprime_casos_civ(string tipo) {
  * @param
  * @return double con la suma de todos los pagos resultando de los casos
  */
-double Casos::calc_pago_crim() {
+double Casos::calcPagoCrim() {
 
   double total = 0;
   for (int i = 0; i < cuenta_crim; i++)
@@ -196,7 +193,7 @@ double Casos::calc_pago_crim() {
 }
 
 /**
- * calc_paga_civ suma la paga total de todos los casos civiles
+ * calcPagoCiv suma la paga total de todos los casos civiles
  *
  * utiliza el arreglo civ[] y el número de cuenta para recorrer todo el
  * arreglo acumulando el pago de todos los casos.
@@ -204,7 +201,7 @@ double Casos::calc_pago_crim() {
  * @param
  * @return double con la suma de todos los pagos resultando de los casos
  */
-double Casos::calc_pago_civ() {
+double Casos::calcPagoCiv() {
 
   double total = 0;
   for (int i = 0; i < cuenta_civ; i++)
@@ -213,7 +210,7 @@ double Casos::calc_pago_civ() {
 }
 
 /**
- * calc_paga_crim suma la paga total de todos los casos criminales de un tipo
+ * calcPagoCrim suma la paga total de todos los casos criminales de un tipo
  *
  * utiliza el arreglo crim[] y el número de cuenta para recorrer todo el
  * arreglo acumulando el pago mensual de todos los casos cuyo string
@@ -222,7 +219,7 @@ double Casos::calc_pago_civ() {
  * @param string tipo debe ser: "homicidio" o "hurto"
  * @return double con la suma de todos los pagos
  */
-double Casos::calc_pago_crim(string tipo) {
+double Casos::calcPagoCrim(string tipo) {
 
   int total = 0;
   for (int i = 0; i < cuenta_crim; i++) {
@@ -233,7 +230,7 @@ double Casos::calc_pago_crim(string tipo) {
 }
 
 /**
- * calc_paga_civsuma la paga total de todos los casos civiles de un tipo
+ * calcPagaCiv suma la paga total de todos los casos civiles de un tipo
  *
  * utiliza el arreglo civ[] y el número de cuenta para recorrer todo el
  * arreglo acumulando el pago mensual de todos los casos cuyo string
@@ -242,7 +239,7 @@ double Casos::calc_pago_crim(string tipo) {
  * @param string tipo debe ser: "laborales" o "lesiones"
  * @return double con la suma de todos los pagos
  */
-double Casos::calc_pago_civ(string tipo) {
+double Casos::calcPagoCiv(string tipo) {
 
   int total = 0;
   for (int i = 0; i < cuenta_civ; i++) {
@@ -253,15 +250,15 @@ double Casos::calc_pago_civ(string tipo) {
 }
 
 /**
- * calc_pago_total suma la paga total de todos los casos
+ * calcPagoTotal suma la paga total de todos los casos
  *
  * suma los pagos de casos criminales al igual que civiles
  *
  * @param
  * @return double con la suma de todos los pagos de cada caso
  */
-double Casos::calc_pago_total(){
-  return calc_pago_crim() + calc_pago_civ();
+double Casos::calcPagoTotal(){
+  return calcPagoCrim() + calcPagoCiv();
 }
 
 /**

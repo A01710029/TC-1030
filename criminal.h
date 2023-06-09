@@ -121,7 +121,7 @@ class Homicidio: public Criminal {
     string toString();
 };
 
-/*
+/**
 * calcularPago define el valor de pago para cada caso
 * basado en el grado y las horas, calcula el pago que recibe
 * el abogado por su trabajo, multiplicando por la tarifa definida
@@ -141,7 +141,7 @@ double Homicidio::calcularPago() {
     return total;
 }
 
-/*
+/**
 * toString convierte atributos a string
 * concatena todos los valores de los atributos en un string
 * para imprimirlos
@@ -181,7 +181,7 @@ class Hurto: public Criminal {
     string toString();
 };
 
-/*
+/**
 * calcularPago define el valor de pago para cada caso
 * basado en el grado y las horas, calcula el pago que recibe
 * el abogado por su trabajo, multiplicando por la tarifa definida
@@ -201,7 +201,7 @@ double Hurto::calcularPago() {
     return total;
 }
 
-/*
+/**
 * calcularTipo define el tipo de hurto cometido
 * al verificar si el valor del objeto robado (valor_robado)
 * sobrepasa un número fijo
@@ -219,7 +219,7 @@ string Hurto::calcularTipo(){
     return tipo;
 }
 
-/*
+/**
 * toString convierte atributos a string
 * concatena todos los valores de los atributos en un string
 * para imprimirlos
