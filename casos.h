@@ -71,7 +71,7 @@ class Casos {
 
 };
 
-/*
+/**
  * creaEjemplosCrim genera objetos Criminal
  *
  * genera 1 objeto de tipo Homicidio y Hurto
@@ -90,7 +90,7 @@ void Casos::creaEjemplosCrim() {
   cuenta_crim++;
 }
 
-/*
+/**
  * creaEjemplosCiv genera objetos Civil
  *
  * genera 1 objeto de tipo Laborales y Lesiones
@@ -107,7 +107,7 @@ void Casos::creaEjemplosCiv() {
   cuenta_civ++;
 }
 
-/*
+/**
  * imprimeCasosCrim imprime los casos criminales guardados
  * utiliza el arreglo crim[] y el número de cuenta para recorrer todo el
  * arreglo imprimiendo cada uno de los objetos con su método toString().
@@ -122,7 +122,7 @@ void Casos::imprimeCasosCrim() {
     cout << crim[i] -> toString();
 }
 
-/*
+/**
  * imprimeCasosCiv imprime los casos civiles guardados
  * utiliza el arreglo civ[] y el número de cuenta para recorrer todo el
  * arreglo imprimiendo cada uno de los objetos con su método toString().
@@ -137,7 +137,7 @@ void Casos::imprimeCasosCiv() {
     cout << civ[i] -> toString();
 }
 
-/*
+/**
  * imprimeCasosCrim imprime casos criminales de un tipo específico (sobrecarga)
  *
  * utiliza el arreglo crim[] y el número de cuenta para recorrer todo el
@@ -156,7 +156,7 @@ void Casos::imprimeCasosCrim(string tipo) {
   }
 }
 
-/*
+/**
  * imprimeCasosCiv imprime casos civiles de un tipo específico (sobrecarga)
  *
  * utiliza el arreglo civ[] y el número de cuenta para recorrer todo el
