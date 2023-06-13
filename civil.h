@@ -75,6 +75,7 @@ class Civil {
         //Métodos abstractos
         virtual string toString() = 0; //para sobreescribir
         virtual double calcularPago() = 0;
+        virtual double calcularGanaCliente() = 0; 
 };
 
 //Declaración de clase Laborales (hereda de Civil)
