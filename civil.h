@@ -2,7 +2,7 @@
 * Proyecto Archivo de Casos
 * Paulina Almada Martínez
 * A01710029
-* 5/26/2023
+* 6/16/2023
 * Esta clase define el objeto Civil que contiene las
 * clases heredadas Laborales y Lesiones
 */
@@ -23,8 +23,8 @@ class Civil {
     string tipo;
     string nombre;
     char veredicto;
-    double acuerdo;
-    double demanda;
+    float acuerdo;
+    float demanda;
     int cuota;
     bool corte;
 
@@ -35,7 +35,7 @@ class Civil {
     Civil(): id(0), tipo(""), nombre(""), veredicto('g'), acuerdo(0.0), demanda (0.0), cuota(0), corte(false) {}; 
 
     //Con parámetros
-    Civil(int id_num, string tip, string nom, char ver, double ac, double dem, int cuo, bool cor):
+    Civil(int id_num, string tip, string nom, char ver, float ac, float dem, int cuo, bool cor):
     id(id_num), tipo(tip), nombre(nom), veredicto(ver), acuerdo(ac), demanda(dem), cuota(cuo), corte(cor) {};
 
     //Métodos del objeto
@@ -56,7 +56,7 @@ class Civil {
             return veredicto;
         }
         
-        double get_acuerdo() {
+        float get_acuerdo() {
             return acuerdo;
         }
         
@@ -64,7 +64,7 @@ class Civil {
             return demanda;
         }
         
-        double get_cuota() {
+        float get_cuota() {
             return cuota;
         }
 
@@ -74,8 +74,8 @@ class Civil {
 
         //Métodos abstractos
         virtual string toString() = 0; //para sobreescribir
-        virtual double calcularPago() = 0;
-        virtual double calcularGanaCliente() = 0; 
+        virtual float calcularPago() = 0;
+        virtual float calcularGanaCliente() = 0; 
 };
 
 //Declaración de clase Laborales (hereda de Civil)
@@ -89,8 +89,8 @@ class Laborales: public Civil {
     //Constructores
     Laborales(): Civil(0, "laborales", "", 'g', 0.0, 0.0, 0, false), demandado("") {};
 
-    Laborales(int id, string nombre, char veredicto, double acuerdo, \
-    double dem, int cuo, bool cor, string deman): Civil(id, "laborales", nombre, \
+    Laborales(int id, string nombre, char veredicto, float acuerdo, \
+    float dem, int cuo, bool cor, string deman): Civil(id, "laborales", nombre, \
     veredicto, acuerdo, demanda, cuota, corte), demandado(deman) {};
 
     //Getters
@@ -106,7 +106,7 @@ class Laborales: public Civil {
         return veredicto;
     }
 
-    double get_acuerdo() {
+    float get_acuerdo() {
             return acuerdo;
     }
         
@@ -114,7 +114,7 @@ class Laborales: public Civil {
         return demanda;
     }
         
-    double get_cuota() {
+    float get_cuota() {
         return cuota;
     }
 
@@ -127,8 +127,8 @@ class Laborales: public Civil {
     }
 
     //Otras funciones
-    double calcularPago();
-    double calcularGanaCliente();
+    float calcularPago();
+    float calcularGanaCliente();
     string toString();
 };
 
@@ -138,10 +138,10 @@ class Laborales: public Civil {
 * el abogado por su trabajo, multiplicando por la cuota definida
 *
 * @param
-* @return valor total de pago (double) 
+* @return valor total de pago (float) 
 */
-double Laborales::calcularPago() {
-    double total;
+float Laborales::calcularPago() {
+    float total;
     if (veredicto == 'p'){
         total = cuota * acuerdo * 0.5;
     } else if (acuerdo / demanda > 0.50 || corte == true) {
@@ -158,10 +158,10 @@ double Laborales::calcularPago() {
 * al final del caso
 * 
 * @param
-* @return valor de la ganancia (double)
+* @return valor de la ganancia (float)
 */
-double Laborales::calcularGanaCliente(){
-    double ganancia;
+float Laborales::calcularGanaCliente(){
+    float ganancia;
     ganancia = acuerdo - demanda;
     return ganancia;
 }
@@ -196,13 +196,13 @@ class Lesiones: public Civil {
     //Constructores
     Lesiones(): Civil(0, "lesiones", "", 'g', 0.0, 0.0, 0, false), dano('m') {};
 
-    Lesiones(int id, string nombre, char veredicto, double acuerdo, \
-    double demanda, int cuota, bool corte, char dan): Civil(id, "lesiones", nombre, \
+    Lesiones(int id, string nombre, char veredicto, float acuerdo, \
+    float demanda, int cuota, bool corte, char dan): Civil(id, "lesiones", nombre, \
     veredicto, acuerdo, demanda, cuota, corte), dano(dan) {};
 
     //Otras funciones
-    double calcularPago();
-    double calcularGanaCliente();
+    float calcularPago();
+    float calcularGanaCliente();
     string toString();
 };
 
@@ -213,10 +213,10 @@ class Lesiones: public Civil {
 * y si el caso fue a corte
 * 
 * @param
-* @return valor total (double)
+* @return valor total (float)
 */
-double Lesiones::calcularPago() {
-    double total;
+float Lesiones::calcularPago() {
+    float total;
     if (veredicto == 'p'){
         total = cuota * acuerdo * 0.5;
     } else if (acuerdo / demanda > 0.50 || corte == true) {
@@ -232,10 +232,10 @@ double Lesiones::calcularPago() {
 * lo que pidio el cliente y lo que se gano
 * al final del caso
 * @param
-* @return double ganancia
+* @return float ganancia
 */
-double Lesiones::calcularGanaCliente(){
-    double ganancia;
+float Lesiones::calcularGanaCliente(){
+    float ganancia;
     ganancia = acuerdo - demanda;
     return ganancia;
 }

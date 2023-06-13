@@ -2,7 +2,7 @@
 * Proyecto Archivo de Casos
 * Paulina Almada Martínez
 * A01710029
-* 5/26/2023
+* 6/16/2023
 * Esta clase define el objeto Criminal que contiene las
 * clases heredadas Homicidio y Hurto
 */
@@ -23,9 +23,9 @@ class Criminal {
     string tipo;
     string nombre;
     char veredicto;
-    double horas;
+    float horas;
     int grado;
-    double tarifa;
+    float tarifa;
 
     //Métodos
     public:
@@ -34,7 +34,7 @@ class Criminal {
     Criminal(): id(0), tipo(""), nombre(""), veredicto('i'), horas(0.0), grado(0), tarifa(0.0) {}; 
 
     //Con parámetros
-    Criminal(int id_num, string tip, string nom, char ver, double hr, int grad, double tar):
+    Criminal(int id_num, string tip, string nom, char ver, float hr, int grad, float tar):
     id(id_num), tipo(tip), nombre(nom), veredicto(ver), horas(hr), grado(grad), tarifa(tar) {};
 
     //Métodos del objeto
@@ -55,7 +55,7 @@ class Criminal {
             return veredicto;
         }
         
-        double get_horas() {
+        float get_horas() {
             return horas;
         }
         
@@ -63,13 +63,13 @@ class Criminal {
             return grado;
         }
         
-        double get_tarifa() {
+        float get_tarifa() {
             return tarifa;
         }
 
         //Método abstracto
         virtual string toString() = 0; //para sobreescribir
-        virtual double calcularPago() = 0;
+        virtual float calcularPago() = 0; 
 };
 
 //Declaración de clase Homicidio (hereda de Criminal)
@@ -83,8 +83,8 @@ class Homicidio: public Criminal {
     //Constructores
     Homicidio(): Criminal(0, "homicidio", "", 'i', 0.0, 0, 0.0), involuntario(false) {};
 
-    Homicidio(int id, string nombre, char veredicto, double horas, \
-    int grado, double tarifa, bool invol): Criminal(id, "homicidio", nombre, \
+    Homicidio(int id, string nombre, char veredicto, float horas, \
+    int grado, float tarifa, bool invol): Criminal(id, "homicidio", nombre, \
     veredicto, horas, grado, tarifa), involuntario(invol) {};
 
     //Getters
@@ -100,7 +100,7 @@ class Homicidio: public Criminal {
         return veredicto;
     }
         
-    double get_horas() {
+    float get_horas() {
         return horas;
     }
         
@@ -108,7 +108,7 @@ class Homicidio: public Criminal {
         return grado;
     }
         
-    double get_tarifa() {
+    float get_tarifa() {
         return tarifa;
     }
 
@@ -117,7 +117,7 @@ class Homicidio: public Criminal {
     }
 
     //Otras funciones
-    double calcularPago();
+    float calcularPago();
     string toString();
 };
 
@@ -127,10 +127,10 @@ class Homicidio: public Criminal {
 * el abogado por su trabajo, multiplicando por la tarifa definida
 *
 * @param
-* @return valor total de pago (double) 
+* @return valor total de pago (float) 
 */
-double Homicidio::calcularPago() {
-    double total;
+float Homicidio::calcularPago() {
+    float total;
     if (grado ==  1) {
         total = tarifa * 1.05 * horas;
     } else if (grado == 2) {
@@ -164,19 +164,19 @@ string Homicidio::toString(){
 class Hurto: public Criminal {
     //Variables de instancia
     private: 
-    double valor_robado;
+    float valor_robado;
 
     //Métodos
     public:
     //Constructores
     Hurto(): Criminal(0, "hurto", "", 'i', 0.0, 0, 0.0), valor_robado(0.0) {};
 
-    Hurto(int id, string nombre, char veredicto, double horas, \
-    int grado, double tarifa, double vr): Criminal(id, "hurto", nombre, \
+    Hurto(int id, string nombre, char veredicto, float horas, \
+    int grado, float tarifa, float vr): Criminal(id, "hurto", nombre, \
     veredicto, horas, grado, tarifa), valor_robado(vr) {};
 
     //Otras funciones
-    double calcularPago();
+    float calcularPago();
     string calcularTipo();
     string toString();
 };
@@ -187,10 +187,10 @@ class Hurto: public Criminal {
 * el abogado por su trabajo, multiplicando por la tarifa definida
 *
 * @param
-* @return valor total de pago (double) 
+* @return valor total de pago (float) 
 */
-double Hurto::calcularPago() {
-    double total;
+float Hurto::calcularPago() {
+    float total;
     if (grado ==  1) {
         total = tarifa * 1.05 * horas;
     } else if (grado == 2) {

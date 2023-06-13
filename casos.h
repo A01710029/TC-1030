@@ -2,7 +2,7 @@
 * Proyecto Archivo de Casos
 * Paulina Almada Martínez
 * A01710029
-* 5/30/2023
+* 6/16/2023
 * Esta clase define el objeto Casos que contiene las
 * operaciones para crear perfiles de casos y calcular
 * pagos y ganancias utilizadas por el menu main.
@@ -48,24 +48,24 @@ class Casos {
   void imprimeCasosCiv(string tipo);
 
   //Para calcular pagos
-  double calcPagoCrim();
-  double calcPagoCiv();
+  float calcPagoCrim();
+  float calcPagoCiv();
 
-  double calcPagoCrim(string tipo);
-  double calcPagoCiv(string tipo);
+  float calcPagoCrim(string tipo);
+  float calcPagoCiv(string tipo);
 
-  double calcPagoTotal();
+  float calcPagoTotal();
 
   //Para crear objetos
-  void agregaHomicidio(string nombre, char veredicto, double horas, \
-  int grado, double tarifa, bool involuntario);
-  void agregaHurto(string nombre, char veredicto, double horas, int grado, \
-  double tarifa, double valor_robado);
+  void agregaHomicidio(string nombre, char veredicto, float horas, \
+  int grado, float tarifa, bool involuntario);
+  void agregaHurto(string nombre, char veredicto, float horas, int grado, \
+  float tarifa, float valor_robado);
 
-  void agregaLaborales(string nombre, char veredicto, double acuerdo, \
-  double demanda, int cuota, bool corte, string demandado);
-  void agregaLesiones(string nombre, char veredicto, double acuerdo, \
-  double demanda, int cuota, bool corte, char dano);
+  void agregaLaborales(string nombre, char veredicto, float acuerdo, \
+  float demanda, int cuota, bool corte, string demandado);
+  void agregaLesiones(string nombre, char veredicto, float acuerdo, \
+  float demanda, int cuota, bool corte, char dano);
 
 };
 
@@ -82,9 +82,9 @@ class Casos {
 void Casos::creaEjemplosCrim() {
 
   //utilizamos new para usar polimorfismo
-  crim[cuenta] = new Homicidio(cuenta, "Fernandez", 'i', 200, 1, 35.0, true);
+  crim[cuenta] = new Homicidio(cuenta, "Medina", 'i', 200, 1, 35.0, true);
   cuenta++;
-  crim[cuenta] = new Hurto(cuenta, "Aldama", 'c', 156.2, 2, 18.0, 1800.0);
+  crim[cuenta] = new Hurto(cuenta, "Molina", 'c', 156.2, 2, 18.0, 1800.0);
   cuenta++;
 }
 
@@ -99,9 +99,9 @@ void Casos::creaEjemplosCrim() {
  * @return
  */
 void Casos::creaEjemplosCiv() {
-  civ[cuenta] = new Laborales(cuenta, "Dominguez", 'g', 1200.0, 1600.0, 6, false, "Nestle");
+  civ[cuenta] = new Laborales(cuenta, "Nava", 'g', 1200.0, 1600.0, 6, false, "Padilla");
   cuenta++;
-  civ[cuenta] = new Lesiones(cuenta, "Cesaro", 'p', 24000.0, 4000.0, 3, true, 'm');
+  civ[cuenta] = new Lesiones(cuenta, "Colin", 'p', 24000.0, 4000.0, 3, true, 'm');
   cuenta++;
 }
 
@@ -180,11 +180,11 @@ void Casos::imprimeCasosCiv(string tipo) {
  * arreglo acumulando el pago de todos los casos.
  *
  * @param
- * @return double con la suma de todos los pagos resultando de los casos
+ * @return float con la suma de todos los pagos resultando de los casos
  */
-double Casos::calcPagoCrim() {
+float Casos::calcPagoCrim() {
 
-  double total = 0;
+  float total = 0;
   for (int i = 0; i < cuenta; i++)
     total = total + crim[i] -> calcularPago();
   return total;
@@ -197,11 +197,11 @@ double Casos::calcPagoCrim() {
  * arreglo acumulando el pago de todos los casos.
  *
  * @param
- * @return double con la suma de todos los pagos resultando de los casos
+ * @return float con la suma de todos los pagos resultando de los casos
  */
-double Casos::calcPagoCiv() {
+float Casos::calcPagoCiv() {
 
-  double total = 0;
+  float total = 0;
   for (int i = 0; i < cuenta; i++)
     total = total + civ[i] -> calcularPago();
   return total;
@@ -215,9 +215,9 @@ double Casos::calcPagoCiv() {
  * get_tipo() coincida con el tipo recibido como parámentro.
  *
  * @param string tipo debe ser: "homicidio" o "hurto"
- * @return double con la suma de todos los pagos
+ * @return float con la suma de todos los pagos
  */
-double Casos::calcPagoCrim(string tipo) {
+float Casos::calcPagoCrim(string tipo) {
 
   int total = 0;
   for (int i = 0; i < cuenta; i++) {
@@ -235,9 +235,9 @@ double Casos::calcPagoCrim(string tipo) {
  * get_tipo() coincida con el tipo recibido como parámentro.
  *
  * @param string tipo debe ser: "laborales" o "lesiones"
- * @return double con la suma de todos los pagos
+ * @return float con la suma de todos los pagos
  */
-double Casos::calcPagoCiv(string tipo) {
+float Casos::calcPagoCiv(string tipo) {
 
   int total = 0;
   for (int i = 0; i < cuenta; i++) {
@@ -253,9 +253,9 @@ double Casos::calcPagoCiv(string tipo) {
  * suma los pagos de casos criminales al igual que civiles
  *
  * @param
- * @return double con la suma de todos los pagos de cada caso
+ * @return float con la suma de todos los pagos de cada caso
  */
-double Casos::calcPagoTotal(){
+float Casos::calcPagoTotal(){
   return calcPagoCrim() + calcPagoCiv();
 }
 
@@ -271,8 +271,8 @@ double Casos::calcPagoTotal(){
  * se considera voluntario o involuntario
  * @return
  */
-void Casos::agregaHomicidio(string nombre, char veredicto, double horas, \
-  int grado, double tarifa, bool involuntario) {
+void Casos::agregaHomicidio(string nombre, char veredicto, float horas, \
+  int grado, float tarifa, bool involuntario) {
     //new crea el objeto para usar polimorfismo
     crim[cuenta] = new Homicidio(cuenta, nombre, veredicto, horas, grado, tarifa, involuntario);
     cuenta++;
@@ -290,8 +290,8 @@ void Casos::agregaHomicidio(string nombre, char veredicto, double horas, \
  * se considera voluntario o involuntario
  * @return
  */
-void Casos::agregaHurto(string nombre, char veredicto, double horas, int grado, \
-  double tarifa, double valor_robado) {
+void Casos::agregaHurto(string nombre, char veredicto, float horas, int grado, \
+  float tarifa, float valor_robado) {
     //new crea el objeto para usar polimorfismo
     crim[cuenta] = new Hurto(cuenta, nombre, veredicto, horas, grado, tarifa, valor_robado);
     cuenta++;
@@ -309,8 +309,8 @@ void Casos::agregaHurto(string nombre, char veredicto, double horas, int grado, 
  * y el nombre de la entidad demandada
  * @return
  */
-void Casos::agregaLaborales(string nombre, char veredicto, double acuerdo, \
-  double demanda, int cuota, bool corte, string demandado) {
+void Casos::agregaLaborales(string nombre, char veredicto, float acuerdo, \
+  float demanda, int cuota, bool corte, string demandado) {
     //new crea el objeto para usar polimorfismo
     civ[cuenta] = new Laborales(cuenta, nombre, veredicto, acuerdo, demanda, cuota, corte, demandado);
     cuenta++;
@@ -328,8 +328,8 @@ void Casos::agregaLaborales(string nombre, char veredicto, double acuerdo, \
  * y si el daño se considera monetario o fisico
  * @return
  */
-void Casos::agregaLesiones(string nombre, char veredicto, double acuerdo, \
-  double demanda, int cuota, bool corte, char dano) {
+void Casos::agregaLesiones(string nombre, char veredicto, float acuerdo, \
+  float demanda, int cuota, bool corte, char dano) {
     //new crea el objeto para usar polimorfismo
     civ[cuenta] = new Lesiones(cuenta, nombre, veredicto, acuerdo, demanda, cuota, corte, dano);
     cuenta++;
