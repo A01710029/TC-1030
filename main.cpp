@@ -69,11 +69,13 @@ int main(int argc, char * argv[]) {
     string deman;
     char dan;
 
+    //Imprime menu
+    menu();
+
     //ciclo para que el menu funcione hasta que se escoga salir
     while(opcion < 14 && opcion > -1){
 
-        //Imprime menu
-        menu();
+        cout << "Seleccione un número: " << endl;
 
         //Pedir al usuario una opcion
         cin >> opcion;
