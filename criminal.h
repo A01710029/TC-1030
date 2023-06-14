@@ -76,15 +76,15 @@ class Criminal {
 class Homicidio: public Criminal {
     //Variables de instancia
     private: 
-    bool involuntario;
+    char involuntario;
 
     //Métodos
     public:
     //Constructores
-    Homicidio(): Criminal(0, "homicidio", "", 'i', 0.0, 0, 0.0), involuntario(false) {};
+    Homicidio(): Criminal(0, "homicidio", "", 'i', 0.0, 0, 0.0), involuntario('f') {};
 
     Homicidio(int id, string nombre, char veredicto, float horas, \
-    int grado, float tarifa, bool invol): Criminal(id, "homicidio", nombre, \
+    int grado, float tarifa, char invol): Criminal(id, "homicidio", nombre, \
     veredicto, horas, grado, tarifa), involuntario(invol) {};
 
     //Getters
@@ -112,7 +112,7 @@ class Homicidio: public Criminal {
         return tarifa;
     }
 
-    bool get_involuntario() {
+    char get_involuntario() {
         return involuntario;
     }
 
@@ -135,7 +135,7 @@ float Homicidio::calcularPago() {
         total = tarifa * 1.05 * horas;
     } else if (grado == 2) {
         total = tarifa * 1.02 * horas;
-    } else if (veredicto == 'c' || involuntario == true){
+    } else if (veredicto == 'c' || involuntario == 't'){
         total = tarifa * 0.5 * horas;
     } 
     return total;
@@ -174,6 +174,35 @@ class Hurto: public Criminal {
     Hurto(int id, string nombre, char veredicto, float horas, \
     int grado, float tarifa, float vr): Criminal(id, "hurto", nombre, \
     veredicto, horas, grado, tarifa), valor_robado(vr) {};
+
+    //Getters
+    int get_id() {
+        return id;
+    }
+
+    string get_nombre() {
+        return nombre;
+    }
+
+    char get_veredicto() {
+        return veredicto;
+    }
+        
+    float get_horas() {
+        return horas;
+    }
+        
+    int get_grado() {
+        return grado;
+    }
+        
+    float get_tarifa() {
+        return tarifa;
+    }
+
+    float get_valor_robado() {
+        return valor_robado;
+    }
 
     //Otras funciones
     float calcularPago();

@@ -41,7 +41,6 @@ int main(int argc, char * argv[]) {
     Casos casosCiv;
     
     //Ejemplos
-    cout << "Casos Ejemplo \n";
     casosCrim.creaEjemplosCrim();
     casosCiv.creaEjemplosCiv();
     cout << endl;
@@ -53,6 +52,7 @@ int main(int argc, char * argv[]) {
     string nom;
     char ver; 
     string temp_tipo;
+    float temp_total;
 
     //Casos criminales
     double hrs;
@@ -75,7 +75,7 @@ int main(int argc, char * argv[]) {
     //ciclo para que el menu funcione hasta que se escoga salir
     while(opcion < 14 && opcion > -1){
 
-        cout << "Seleccione un número: " << endl;
+        cout << "Seleccione un número: ";
 
         //Pedir al usuario una opcion
         cin >> opcion;
@@ -114,12 +114,12 @@ int main(int argc, char * argv[]) {
             break;
             //Opcion 5: Calcula pago casos criminales
             case 5:
-                casosCrim.calcPagoCrim();
+                cout << casosCrim.calcPagoCrim() << endl;
                 cout << endl;
             break;
             //Opcion 6: Calcula pago casos civiles
             case 6: 
-                casosCiv.calcPagoCiv();
+                cout << casosCiv.calcPagoCiv() << endl;
                 cout << endl;
             break;
             //Opcion 7: Calcula pago casos criminales por tipo
@@ -127,9 +127,9 @@ int main(int argc, char * argv[]) {
                 cout << "Tipo (homicidio o hurto): ";
                 cin >> temp_tipo;
                 if(temp_tipo == "homicidio")
-                    casosCrim.calcPagoCrim("homicidio");
+                    cout << casosCrim.calcPagoCrim("homicidio") << endl;
                 else
-                    casosCrim.calcPagoCrim("hurto");
+                    cout << casosCrim.calcPagoCrim("hurto") << endl;
                 cout << endl;
             break;
             //Opcion 8: Calcula pago casos civiles por tipo
@@ -137,15 +137,15 @@ int main(int argc, char * argv[]) {
                 cout << "Tipo (laborales o lesiones): ";
                 cin >> temp_tipo;
                 if(temp_tipo == "laborales")
-                    casosCiv.calcPagoCiv("laborales");
+                    cout << casosCiv.calcPagoCiv("laborales") << endl;
                 else
-                    casosCiv.calcPagoCiv("lesiones");
+                    cout << casosCiv.calcPagoCiv("lesiones") << endl;
                 cout << endl;
             break;
             //Opcion 9: Calcula pago total
             case 9: 
-                casosCrim.calcPagoTotal();
-                cout << endl;
+                temp_total = casosCrim.calcPagoCrim() + casosCiv.calcPagoCiv();
+                cout << temp_total << endl;
             break;
             //Opcion 10: Agrega homicidio
             case 10:
@@ -162,7 +162,7 @@ int main(int argc, char * argv[]) {
                 cout << "Homicidio involuntario (t/f): ";
                 cin >> invol;
                 casosCrim.agregaHomicidio(nom, ver, hrs, grad, tar, invol);
-                cout << endl;
+                cout << "Homicidio agregado" << endl;
             break;
             //Opcion 11: Agrega hurto
             case 11: 
@@ -179,7 +179,7 @@ int main(int argc, char * argv[]) {
                 cout << "Valor robado: ";
                 cin >> val;
                 casosCrim.agregaHurto(nom, ver, hrs, grad, tar, val);
-                cout << endl;
+                cout << "Hurto agregado" << endl;
             break;
             //Opcion 12: Agrega demanda laboral
             case 12:
@@ -198,7 +198,7 @@ int main(int argc, char * argv[]) {
                 cout << "Demandando a: ";
                 cin >> deman;
                 casosCiv.agregaLaborales(nom, ver, ac, dem, cuo, cor, deman);
-                cout << endl;
+                cout << "Demanda laboral agregada" << endl;
             break;
             //Opcion 13: Agrega lesion personal
             case 13: 
@@ -217,7 +217,7 @@ int main(int argc, char * argv[]) {
                 cout << "Tipo de daño (f/m): ";
                 cin >> dan;
                 casosCiv.agregaLesiones(nom, ver, ac, dem, cuo, cor, dan);
-                cout << endl;
+                cout << "Lesion personal agregada" << endl;
             break;
         }
     }

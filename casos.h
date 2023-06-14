@@ -82,7 +82,7 @@ class Casos {
 void Casos::creaEjemplosCrim() {
 
   //utilizamos new para usar polimorfismo
-  crim[cuenta] = new Homicidio(cuenta, "Medina", 'i', 200, 1, 35.0, true);
+  crim[cuenta] = new Homicidio(cuenta, "Medina", 'i', 200, 1, 35.0, 't');
   cuenta++;
   crim[cuenta] = new Hurto(cuenta, "Molina", 'c', 156.2, 2, 18.0, 1800.0);
   cuenta++;
@@ -99,9 +99,9 @@ void Casos::creaEjemplosCrim() {
  * @return
  */
 void Casos::creaEjemplosCiv() {
-  civ[cuenta] = new Laborales(cuenta, "Nava", 'g', 1200.0, 1600.0, 6, false, "Padilla");
+  civ[cuenta] = new Laborales(cuenta, "Nava", 'g', 1200.0, 1600.0, 6.0, 'f', "Padilla");
   cuenta++;
-  civ[cuenta] = new Lesiones(cuenta, "Colin", 'p', 24000.0, 4000.0, 3, true, 'm');
+  civ[cuenta] = new Lesiones(cuenta, "Colin", 'p', 24000.0, 4000.0, 3.0, 't', 'm');
   cuenta++;
 }
 
@@ -242,21 +242,9 @@ float Casos::calcPagoCiv(string tipo) {
   int total = 0;
   for (int i = 0; i < cuenta; i++) {
     if (civ[i] -> get_tipo() == tipo)
-      total = total + crim[i] -> calcularPago();
+      total = total + civ[i] -> calcularPago();
   }
   return total;
-}
-
-/**
- * calcPagoTotal suma la paga total de todos los casos
- *
- * suma los pagos de casos criminales al igual que civiles
- *
- * @param
- * @return float con la suma de todos los pagos de cada caso
- */
-float Casos::calcPagoTotal(){
-  return calcPagoCrim() + calcPagoCiv();
 }
 
 /**
@@ -271,6 +259,7 @@ float Casos::calcPagoTotal(){
  * se considera voluntario o involuntario
  * @return
  */
+
 void Casos::agregaHomicidio(string nombre, char veredicto, float horas, \
   int grado, float tarifa, bool involuntario) {
     //new crea el objeto para usar polimorfismo
