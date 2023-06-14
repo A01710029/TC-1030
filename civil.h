@@ -90,7 +90,7 @@ class Laborales: public Civil {
     Laborales(): Civil(0, "laborales", "", 'g', 0.0, 0.0, 0.0, false), demandado("") {};
 
     Laborales(int id, string nombre, char veredicto, float acuerdo, \
-    float dem, float cuo, char cor, string deman): Civil(id, "laborales", nombre, \
+    float demanda, float cuota, char corte, string deman): Civil(id, "laborales", nombre, \
     veredicto, acuerdo, demanda, cuota, corte), demandado(deman) {};
 
     //Getters
