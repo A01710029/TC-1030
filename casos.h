@@ -82,7 +82,7 @@ class Casos {
 void Casos::creaEjemplosCrim() {
 
   //utilizamos new para usar polimorfismo
-  crim[cuenta] = new Homicidio(cuenta, "Medina", 'i', 200, 1, 35.0, 't');
+  crim[cuenta] = new Homicidio(cuenta, "Medina", 'i', 200, 1, 35.0, false);
   cuenta++;
   crim[cuenta] = new Hurto(cuenta, "Molina", 'c', 156.2, 2, 18.0, 1800.0);
   cuenta++;
@@ -99,9 +99,9 @@ void Casos::creaEjemplosCrim() {
  * @return
  */
 void Casos::creaEjemplosCiv() {
-  civ[cuenta] = new Laborales(cuenta, "Nava", 'g', 1200.0, 1600.0, 6.0, 'f', "Padilla");
+  civ[cuenta] = new Laborales(cuenta, "Nava", 'g', 1200.0, 1600.0, 6.0, false, "Padilla");
   cuenta++;
-  civ[cuenta] = new Lesiones(cuenta, "Colin", 'p', 24000.0, 4000.0, 3.0, 't', 'm');
+  civ[cuenta] = new Lesiones(cuenta, "Colin", 'p', 24000.0, 4000.0, 3.0, true, 'm');
   cuenta++;
 }
 

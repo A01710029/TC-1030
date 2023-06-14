@@ -76,12 +76,12 @@ class Criminal {
 class Homicidio: public Criminal {
     //Variables de instancia
     private: 
-    char involuntario;
+    bool involuntario;
 
     //Métodos
     public:
     //Constructores
-    Homicidio(): Criminal(0, "homicidio", "", 'i', 0.0, 0, 0.0), involuntario('f') {};
+    Homicidio(): Criminal(0, "homicidio", "", 'i', 0.0, 0, 0.0), involuntario(false) {};
 
     Homicidio(int id, string nombre, char veredicto, float horas, \
     int grado, float tarifa, char invol): Criminal(id, "homicidio", nombre, \
@@ -112,7 +112,7 @@ class Homicidio: public Criminal {
         return tarifa;
     }
 
-    char get_involuntario() {
+    bool get_involuntario() {
         return involuntario;
     }
 
@@ -135,7 +135,7 @@ float Homicidio::calcularPago() {
         total = tarifa * 1.05 * horas;
     } else if (grado == 2) {
         total = tarifa * 1.02 * horas;
-    } else if (veredicto == 'c' || involuntario == 't'){
+    } else if (veredicto == 'c' || involuntario == true){
         total = tarifa * 0.5 * horas;
     } 
     return total;

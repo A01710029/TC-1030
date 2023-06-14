@@ -26,16 +26,16 @@ class Civil {
     float acuerdo;
     float demanda;
     float cuota;
-    char corte;
+    bool corte;
 
     //Métodos
     public:
     //Constructores
     //Default
-    Civil(): id(0), tipo(""), nombre(""), veredicto('g'), acuerdo(0.0), demanda (0.0), cuota(0.0), corte('f') {}; 
+    Civil(): id(0), tipo(""), nombre(""), veredicto('g'), acuerdo(0.0), demanda (0.0), cuota(0.0), corte(false) {}; 
 
     //Con parámetros
-    Civil(int id_num, string tip, string nom, char ver, float ac, float dem, float cuo, char cor):
+    Civil(int id_num, string tip, string nom, char ver, float ac, float dem, float cuo, bool cor):
     id(id_num), tipo(tip), nombre(nom), veredicto(ver), acuerdo(ac), demanda(dem), cuota(cuo), corte(cor) {};
 
     //Métodos del objeto
@@ -68,7 +68,7 @@ class Civil {
             return cuota;
         }
 
-        char get_corte(){
+        bool get_corte(){
             return corte;
         }
 
@@ -87,7 +87,7 @@ class Laborales: public Civil {
     //Métodos
     public:
     //Constructores
-    Laborales(): Civil(0, "laborales", "", 'g', 0.0, 0.0, 0.0, 'f'), demandado("") {};
+    Laborales(): Civil(0, "laborales", "", 'g', 0.0, 0.0, 0.0, false), demandado("") {};
 
     Laborales(int id, string nombre, char veredicto, float acuerdo, \
     float dem, float cuo, char cor, string deman): Civil(id, "laborales", nombre, \
@@ -118,7 +118,7 @@ class Laborales: public Civil {
         return cuota;
     }
 
-    char get_corte(){
+    bool get_corte(){
         return corte;
     }
 
@@ -144,7 +144,7 @@ float Laborales::calcularPago() {
     float total;
     if (veredicto == 'p'){
         total = cuota * acuerdo * 0.5;
-    } else if (acuerdo / demanda > 0.50 || corte == 't') {
+    } else if (acuerdo / demanda > 0.50 || corte == true) {
         total = cuota * acuerdo * 1.05;
     } else if (acuerdo / demanda < 0.50) {
         total = cuota * acuerdo * 1.02;
@@ -194,10 +194,10 @@ class Lesiones: public Civil {
     //Métodos
     public:
     //Constructores
-    Lesiones(): Civil(0, "lesiones", "", 'g', 0.0, 0.0, 0.0, 'f'), dano('m') {};
+    Lesiones(): Civil(0, "lesiones", "", 'g', 0.0, 0.0, 0.0, false), dano('m') {};
 
     Lesiones(int id, string nombre, char veredicto, float acuerdo, \
-    float demanda, float cuota, char corte, char dan): Civil(id, "lesiones", nombre, \
+    float demanda, float cuota, bool corte, char dan): Civil(id, "lesiones", nombre, \
     veredicto, acuerdo, demanda, cuota, corte), dano(dan) {};
 
     //Otras funciones
@@ -219,7 +219,7 @@ float Lesiones::calcularPago() {
     float total;
     if (veredicto == 'p'){
         total = cuota * acuerdo * 0.5;
-    } else if (acuerdo / demanda > 0.50 || corte == 't') {
+    } else if (acuerdo / demanda > 0.50 || corte == true) {
         total = cuota * acuerdo * 1.05;
     } else if (acuerdo / demanda < 0.50 || dano == 'm') {
         total = cuota * acuerdo * 1.02;

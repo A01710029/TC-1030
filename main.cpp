@@ -146,6 +146,7 @@ int main(int argc, char * argv[]) {
             case 9: 
                 temp_total = casosCrim.calcPagoCrim() + casosCiv.calcPagoCiv();
                 cout << temp_total << endl;
+                cout << endl;
             break;
             //Opcion 10: Agrega homicidio
             case 10:
@@ -155,14 +156,15 @@ int main(int argc, char * argv[]) {
                 cin >> ver;
                 cout << "Horas dedicadas al caso: ";
                 cin >> hrs;
-                cout << "Grado del homicidio: ";
+                cout << "Grado del homicidio (1/2/3): ";
                 cin >> grad;
                 cout << "Tarifa por hora establecida: ";
                 cin >> tar;
-                cout << "Homicidio involuntario (t/f): ";
+                cout << "Homicidio involuntario (1/0): ";
                 cin >> invol;
                 casosCrim.agregaHomicidio(nom, ver, hrs, grad, tar, invol);
                 cout << "Homicidio agregado" << endl;
+                cout << endl;
             break;
             //Opcion 11: Agrega hurto
             case 11: 
@@ -172,7 +174,7 @@ int main(int argc, char * argv[]) {
                 cin >> ver;
                 cout << "Horas dedicadas al caso: ";
                 cin >> hrs;
-                cout << "Grado del hurto: ";
+                cout << "Grado del hurto (1/2/3): ";
                 cin >> grad;
                 cout << "Tarifa por hora establecida: ";
                 cin >> tar;
@@ -180,6 +182,7 @@ int main(int argc, char * argv[]) {
                 cin >> val;
                 casosCrim.agregaHurto(nom, ver, hrs, grad, tar, val);
                 cout << "Hurto agregado" << endl;
+                cout << endl;
             break;
             //Opcion 12: Agrega demanda laboral
             case 12:
@@ -193,12 +196,13 @@ int main(int argc, char * argv[]) {
                 cin >> dem;
                 cout << "Cuota del acuerdo establecida (porcentaje): ";
                 cin >> cuo;
-                cout << "Fue a corte (t/f): ";
+                cout << "Fue a corte (1/0): ";
                 cin >> cor;
-                cout << "Demandando a: ";
+                cout << "Demandando a (solo apellido): ";
                 cin >> deman;
                 casosCiv.agregaLaborales(nom, ver, ac, dem, cuo, cor, deman);
                 cout << "Demanda laboral agregada" << endl;
+                cout << endl;
             break;
             //Opcion 13: Agrega lesion personal
             case 13: 
@@ -212,12 +216,13 @@ int main(int argc, char * argv[]) {
                 cin >> dem;
                 cout << "Cuota del acuerdo establecida (porcentaje): ";
                 cin >> cuo;
-                cout << "Fue a corte (t/f): ";
+                cout << "Fue a corte (1/0): ";
                 cin >> cor;
                 cout << "Tipo de daño (f/m): ";
                 cin >> dan;
                 casosCiv.agregaLesiones(nom, ver, ac, dem, cuo, cor, dan);
                 cout << "Lesion personal agregada" << endl;
+                cout << endl;
             break;
         }
     }
