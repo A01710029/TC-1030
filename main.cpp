@@ -179,7 +179,7 @@ int main(int argc, char * argv[]) {
             break;
             //Opcion 11: Agrega hurto
             case 11: 
-                cout << "Nombre del cliente: ";
+                cout << "Nombre (solo apellido) del cliente: ";
                 cin >> nom;
                 cout << "Veredicto del caso (i/c): ";
                 cin >> ver;
@@ -197,7 +197,7 @@ int main(int argc, char * argv[]) {
             break;
             //Opcion 12: Agrega demanda laboral
             case 12:
-                cout << "Nombre del cliente: ";
+                cout << "Nombre (solo apellido) del cliente: ";
                 cin >> nom;
                 cout << "Veredicto del caso (g/p): ";
                 cin >> ver;
@@ -217,7 +217,7 @@ int main(int argc, char * argv[]) {
             break;
             //Opcion 13: Agrega lesion personal
             case 13: 
-                cout << "Nombre del cliente: ";
+                cout << "Nombre (solo apellido) del cliente: ";
                 cin >> nom;
                 cout << "Veredicto del caso (g/p): ";
                 cin >> ver;
