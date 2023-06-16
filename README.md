@@ -1,5 +1,5 @@
 # TC-1030
-Un programa para organizar los casos civiles y criminales de un abogado. Permite al usuario, a través de un menu, escoger entre varios comandos que le ayudan a mantener registro de sus casos y determinar cuanto dinero hace. Tiene la opción de ingresar información sobre sus casos, divididos en cuatro tipos: homicidios y hurtos (criminales) y demandas laborales y de lesiones personales (civiles), que se guardan en listas por tipo. También puede mostrar todos los casos que ha registrado en forma de lista, dependiendo del tipo.
+ESte es un programa diseñado para digitalizar y organizar los casos civiles y criminales de un abogado. Permite al usuario, a través de un menu, escoger entre varios comandos que le ayudan a mantener registro de sus casos y determinar cuanto dinero hace. Tiene la opción de ingresar información sobre sus casos, divididos en cuatro tipos: homicidios y hurtos (criminales) y demandas laborales y de lesiones personales (civiles), que se guardan en listas por tipo (criminal y civil). También puede mostrar todos los casos que ha registrado, dependiendo del tipo, tanto las categorías generales de criminal o civil, o los tipos más específicos dentro de estas categorias. Igualmente, puede calcular su ganancia con estas categorias generales o específicas, y su ganancia total entre todos los casos.
 
 Este proyecto está basado y comparte concepto con el proyecto que realicé para la clase TC-1033, pero incluye mejoras y funcionalidades agregadas, al igual que la aplicación de polimorfismo en la estructura del código.  
 
@@ -15,4 +15,6 @@ Se cambió el tipo de información pedida por el menú para las opciones 10, 12 
 
 Se agregaron clarificaciones e instrucciones para la operación y los tipos de datos pedidos por el menú para la conveniencia del usuario. Este cambio se encuentra en las líneas 40 a 44 del "main". 
 
-Se eliminó el método calcPagoTotal de "casos" y se realizó la suma que originalmente hacia este método dentro del código del main en la opción 9 porque el objeto de Casos creado en main no puede acceder a las dos funciones requeridas para esa suma directamente, lo cual producía un error. Este cambio se encuentra en la línea 158 del "main". 
+Se eliminó el método calcPagoTotal de "casos" y se realizó la suma que originalmente hacia este método dentro del código del main en la opción 9 porque el objeto de Casos creado en main no puede acceder a las dos funciones requeridas para esa suma directamente, lo cual producía un error. Este cambio se encuentra en la línea 158 del "main".
+
+Se agregaron más detalles a la descripción de las funcionalidades del programa en el README. 
