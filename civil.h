@@ -32,11 +32,13 @@ class Civil {
     public:
     //Constructores
     //Default
-    Civil(): id(0), tipo(""), nombre(""), veredicto('g'), acuerdo(0.0), demanda (0.0), cuota(0.0), corte(false) {}; 
+    Civil(): id(0), tipo(""), nombre(""), veredicto('g'), acuerdo(0.0), \
+    demanda (0.0), cuota(0.0), corte(false) {}; 
 
     //Con parámetros
     Civil(int id_num, string tip, string nom, char ver, float ac, float dem, float cuo, bool cor):
-    id(id_num), tipo(tip), nombre(nom), veredicto(ver), acuerdo(ac), demanda(dem), cuota(cuo), corte(cor) {};
+    id(id_num), tipo(tip), nombre(nom), veredicto(ver), acuerdo(ac), \
+    demanda(dem), cuota(cuo), corte(cor) {};
 
     //Métodos del objeto
         //Getters

@@ -33,6 +33,17 @@ void menu(){
     cout << "12. Agrega demanda laboral \n";
     cout << "13. Agrega lesion personal \n";
     cout << "14. Salir \n";
+
+    cout << endl;
+
+    //Instrucciones para el usuario
+    cout << "Considere que i = inocente y c = culpable \n";
+    cout << "Considere que 1 = verdadero y 0 = falso \n";
+    cout << "Considere que g = ganancia y p = perdida \n";
+    cout << "Considere que f = fisico y m = monetario \n";
+    cout << "Preferiblemente, no use acentos \n";
+
+    cout << endl;
 }
 
 int main(int argc, char * argv[]) {

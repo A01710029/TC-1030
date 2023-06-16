@@ -31,11 +31,13 @@ class Criminal {
     public:
     //Constructores
     //Default
-    Criminal(): id(0), tipo(""), nombre(""), veredicto('i'), horas(0.0), grado(0), tarifa(0.0) {}; 
+    Criminal(): id(0), tipo(""), nombre(""), veredicto('i'), horas(0.0), \
+    grado(0), tarifa(0.0) {}; 
 
     //Con parámetros
     Criminal(int id_num, string tip, string nom, char ver, float hr, int grad, float tar):
-    id(id_num), tipo(tip), nombre(nom), veredicto(ver), horas(hr), grado(grad), tarifa(tar) {};
+    id(id_num), tipo(tip), nombre(nom), veredicto(ver), horas(hr), \
+    grado(grad), tarifa(tar) {};
 
     //Métodos del objeto
         //Getters
